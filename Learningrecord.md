@@ -45,12 +45,9 @@ git reset --hard 版本号
 4.撤销修改  
 当你想要撤销工作区修改时，可以使用命令将指定文件在工作区的修改全部撤销。  
 命令：  
-git checkout -- filename.md（旧版）  
-git git restore filename.md(新版)  
-注意：个人倾向使用新版写法，作用是相同的，并且能避免由于漏写-- 造成的错误。  
-新版：  
+git git restore filename.md  
 若已经提交至暂存区可使用命令git restore --staged filename.cd把暂存区的修改撤销掉，重新放回工作区。  
-旧版：  
+旧版中：  
 git checkout -- filename.md命令中的--很重要，没有--，就变成了“切换到另一个分支”的命令。  
 命令git checkout -- filename.md意思就是，把filename.md文件在工作区的修改全部撤销，有两种情况：  
 情况1：filename.md自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；  
@@ -58,6 +55,9 @@ git checkout -- filename.md命令中的--很重要，没有--，就变成了“�
 若已经提交至暂存区可使用命令git reset HEAD filename.md把暂存区的修改撤销掉，重新放回工作区。  
 git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。  
 5.删除文件  
+若将文件管理器中的某文件删除，则工作区和版本库就不一致了，git status命令会立即告诉用户哪些文件被删除了。则需要执行以下命令：  
+$ git rm filename.md  
+$ git commit -m"移出**文件"  
 
 五.Git远程仓库的创建  
 六.GitHub远程仓库的使用_HTTPS协议  
