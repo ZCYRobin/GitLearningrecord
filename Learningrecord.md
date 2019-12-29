@@ -73,7 +73,7 @@ b.使用clone命令克隆线上仓库到本地并鉴权
 需要修改"git/config"文件内容：  
 [remote "origin"]
 	url = https://用户名:密码@github.com/ZCYRobin/GitLearningrecord.git
-	fetch = +refs/heads/*:refs/remotes/origin/*
+	fetch = +refs/heads/*:refs/remotes/origin/*  
 c.在仓库上做对应的操作（提交暂存区、提交本地仓库、提交线上仓库、拉取线上仓库）  
 提交线上仓库命令为：git push  
 如果push后未出现fatal错误则表示提交成功。  
