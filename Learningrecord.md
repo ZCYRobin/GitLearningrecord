@@ -58,11 +58,47 @@ git reset命令既可以回退版本，也可以把暂存区的修改回退到�
 若将文件管理器中的某文件删除，则工作区和版本库就不一致了，git status命令会立即告诉用户哪些文件被删除了。则需要执行以下命令：  
 $ git rm filename.md  
 $ git commit -m"移出**文件"  
+注意：git rm <file> 和 git add <file>效果相同。  
+如果 该文件是误删，未提交至版本库，则可使用git checkout恢复至版本库版本。  
+$ git checkout -- filename.md  
+git checkout 是用版本库的版本替换工作区版本。  
 
-五.Git远程仓库的创建  
-六.GitHub远程仓库的使用_HTTPS协议  
-七.GitHub远程仓库的使用_SSH协议  
-八.Git的分支操作  
-九.冲突的产生与解决  
-十.图形化管理工具  
-十一.忽略文件操作
+五.GitHub远程仓库的使用  
+以GitHub为例，首先，create a new repository。  
+1.基于HTTPS协议  
+a.本地创建一个空目录，名称命名为filename，并且cd到该目录下。  
+b.使用clone命令克隆线上仓库到本地并鉴权  
+语法：git clone 线上仓库地址  
+首次向线上仓库提交内容时会出现403错误，原因是不是任何人都可以往线上仓库提交内容，必须鉴权。  
+需要修改"git/config"文件内容：  
+[remote "origin"]
+	url = https://用户名:密码@github.com/ZCYRobin/GitLearningrecord.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+c.在仓库上做对应的操作（提交暂存区、提交本地仓库、提交线上仓库、拉取线上仓库）  
+提交线上仓库命令为：git push  
+如果push后未出现fatal错误则表示提交成功。  
+拉取线上仓库命令为：git pull  
+养成第一件事先git pull的好习惯，避免出现修改冲突。并且要记得及时提交。  
+2.基于SSH协议【推荐使用】  
+该方式与http方式相比，只影响github对于用户的身份鉴权方式，对git的具体操作无影响。  
+a.生成客户端公私钥文件  
+生成公私钥对指令（需先自行安装OpenSSH）：ssh-keygen -t rsa -c "注册邮箱"
+b.将公钥上传到github  
+找到公钥所在文件id_rsa.pub 用编辑器打开，把该内容复制，粘贴到浏览器中显示的指定位置，title随意。  
+c.执行后续git操作，操作和之前相同，先git clone到本地。  
+
+六.Git的分支操作  
+分支相关指令：  
+查看分支：git branch  
+创建分支：git branch 分支名  
+切换分支：git checkout 分支名  
+删除分支：git branch -d 分支名  
+合并分支：git merge 被合并的分支名  
+查看分支命令执行后，当前分支前面会有一个标记"*"并且会有颜色标记。  
+对于新分支，可以使用"git checkout -b 分支名"指令来切换分支，-b选项表示创建并切换，相当于是创建分支和切换分支两个操作命令。  
+删除分支时，必须先退出要删除的分支。  
+注意本地分支操作后还是要记得及时push。  
+
+七.冲突的产生与解决  
+八.图形化管理工具  
+九.忽略文件操作
