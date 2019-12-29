@@ -110,7 +110,8 @@ c.执行后续git操作，操作和之前相同，先git clone到本地。
 
 九.忽略文件操作
 在git工作区根目录下创建一个特殊的.gitignore文件，该文件用于声明忽略文件或不忽略文件规则，该规则对当前目录及其子目录生效。  
-注意，该文件因为没有文件名，没有办法在windows目录下直接创建，可通过命令行Git Bash 来 touch 创建。命令：$ touch .gitignore  
+注意，该文件因为没有文件名，没有办法在windows目录下直接创建，可通过命令行Git Bash 来 touch 创建。  
+命令：$ touch .gitignore  
 然后把需要忽略的文件名填写进去，git就会自动忽略这些文件。直接用编辑器打开.gitignore文件写规则，例如：  
 #忽略掉/js目录  
 /js/  
